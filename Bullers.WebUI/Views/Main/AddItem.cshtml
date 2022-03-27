@@ -1,0 +1,134 @@
+﻿@model Bullers.Entity.Concrete.Models.Total
+ 
+
+
+@{
+    ViewBag.Title = "AddItem";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+
+
+}
+
+    <section class="add-n">
+        <h5>New Ad</h5>
+        <div class="add-new-section">
+            <div class="form">
+                @*<form id="form-nodiv">*@
+                @using (Html.BeginForm("AddItem", "Main", FormMethod.Post, new { enctype="multipart/form-data",id = "form-nodiv" }))
+                {
+                <div class="validation-errors">
+                    @*<p id="errors"></p>*@
+                    @Html.ValidationSummary(false, "", new { id = "errors" })
+                </div>
+
+                    <div class="field-product">
+                        <label>Category</label>
+                        <select name="CategoryID" id="category-select" class="select-arrow">
+                            <option value="0" selected disabled>Please select ad type</option>
+                            <option value="1">Personal Things</option>
+                            <option value="2">Electronics</option>
+                            <option value="3">Vehicles</option>
+                            <option value="4">Real estate</option>
+                            
+                            @*<option value="5">Hobby</option>
+                            <option value="6">Vacancies</option>*@
+
+                        </select>
+                        <span class="error"></span>
+                    </div>
+                    
+                    <div class="field-product">
+                        <label>City</label>
+                        <select name="City" id="city-select">
+                            <option value="İstanbul">İstanbul</option>
+                            <option value="Ankara">Ankara</option>
+                            <option value="İzmir">İzmir</option>
+                            <option value="Adana">Adana</option>
+                            <option value="Adiyaman">Adıyaman</option>
+                            <option value="Afyonkarahisar">Afyonkarahisar</option>
+                            <option value="Agrı">Ağrı</option>
+                            <option value="Aksaray">Aksaray</option>
+                            <option value="Amasya">Amasya</option>
+                            <option value="Antalya">Antalya</option>
+                            <option value="Ardahan">Ardahan</option>
+                            <option value="Artvin">Artvin</option>
+                            <option value="Aydin">Aydın</option>
+                            <option value="Balikesir">Balıkesir</option>
+
+
+                        </select>
+                        <span class="error"></span>
+                    </div>
+
+                    <div class="field-product">
+                        <label>Header</label>
+                        <input type="text" name="ProductHeader" id="ProductHeader" style="appearance:none;">
+                        <span class="error">asd</span>
+                    </div>
+
+                    <div class="field-product">
+                        <label>Price</label>
+                        <input type="number" name="Price" id="Price">
+                        <span id="price-span" class="error"></span>
+                    </div>
+
+                    <div class="field-product" style="margin-bottom:20%;">
+                        <label>Description</label>
+                        <textarea id="Description" name="Description"></textarea>
+                        <span id="desc-span" class="error"></span>
+                    </div>
+
+                    <div class="field-product">
+                        <label>Photos</label>
+                        <input type="file" name="imagePath" id="Photos" multiple>
+                        <span class="error">dsf</span>
+                    </div>
+
+                    <div class="seller-info">
+
+                        <div class="field-product">
+                            <label>Name</label>
+                            <input type="text" name="OwnerName" id="Name" value="@Session["userName"]">
+                            <span class="error"></span>
+                        </div>
+
+                        <div class="field-product">
+                            <label>Email</label>
+                            <input type="email" name="OwnerEmail" id="Email" value="@Session["userMail"]">
+                            <span class="error">asd</span>
+                        </div>
+
+                        <div class="field-product">
+                            <label>Phone</label>
+                            <input type="tel" name="OwnerPhone" id="Phone" style="appearance:none;">
+                            <span class="error">asd</span>
+                        </div>
+
+
+                    </div>
+                    <input type="hidden"  />
+                    <input type="hidden" name="ProductID" />
+                    @*<input type="hidden" name="CategoryID" />*@
+                    <button type="submit" class="add-new-button" id="add-form-button"><i class="fa-solid fa-plus"></i>Add New</button>
+                }
+                @*</form>*@
+            </div>
+            <div class="rules">
+                <p>What is Lorem Ipsum?</p>
+                <p><span>*</span>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                <p><span>*</span>It was popularised in the 1960s with the release</p>
+                <p><span>*</span>Many desktop publishing packages and web page editors now</p>
+                <p><span>*</span>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                <p><span>*</span>It was popularised in the 1960s with the release</p>
+                <p><span>*</span>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus</p>
+            </div>
+        </div>
+    </section>
+
+  
+
+
+    <script type="text/javascript" src="~/Content/UI/addvalidation.js"></script>
+    <script type="text/javascript" src="~/Content/UI/jsSelection.js"></script>
+
+    <script src="~/Content/UI/model-summary.js"></script>

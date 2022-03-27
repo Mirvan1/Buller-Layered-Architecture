@@ -1,0 +1,56 @@
+﻿@model Bullers.Entity.Concrete.User
+@{
+    ViewBag.Title = "UserInfo";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+
+
+}
+
+<section class="user-profile-n">
+    <h5>Update Profile</h5>
+    <div class="profile-section-n">
+        <div class="profile-form-n">
+
+            @using (Html.BeginForm("UserUpdate", "User", FormMethod.Post, new { id = "profile-form-nodiv" }))
+            {
+                <div class="validation-errors">
+                    @*<p id="errors"></p>*@
+                    @Html.ValidationSummary(false, "", new { id = "errors" })
+                </div>
+
+                <div class="user-text-field-n">
+                    <label>Username</label>
+                    @*<input type="text" name="Username" />*@
+                    @Html.TextBoxFor(x => x.Username)
+                    <span class="error"></span>
+                </div>
+
+                <div class="user-text-field-n">
+                    <label>Email</label>
+                    @*<input type="text" name="UseEmail" />*@
+                    @Html.TextBoxFor(x => x.UseEmail)
+                    <span class="error"></span>
+                </div>
+
+
+
+                @Html.TextBoxFor(x => x.UserID, new { type = "hidden" })
+                <button type="submit" class="update-user-button" id="update-user-button"><i class="fa-solid fa-pen"></i> Update</button>
+
+            }
+        </div>
+        <div class="rules">
+            <p>What is Lorem Ipsum?</p>
+            <p><span>*</span>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p><span>*</span>It was popularised in the 1960s with the release</p>
+            <p><span>*</span>Many desktop publishing packages and web page editors now</p>
+            <p><span>*</span>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+            <p><span>*</span>It was popularised in the 1960s with the release</p>
+            <p><span>*</span>Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus</p>
+        </div>
+    </div>
+</section>
+
+
+
+<script src="~/Content/UI/model-summary.js"></script>

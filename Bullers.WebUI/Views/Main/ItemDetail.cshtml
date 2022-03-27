@@ -1,0 +1,123 @@
+﻿@model Bullers.Entity.Concrete.PersonelProducts
+@{
+    ViewBag.Title = "ItemDetail";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+<section class="breadcrumb">
+    <div class="breadcrumb-div">
+        <a href="">Home Page</a> / <a href="">Category</a> / <a href="">Item Name</a>
+    </div>
+</section>
+
+<section class="photos">
+    <div class="photo-slider">
+        <img src="@Model.CommonProducts.Image1" class="detail-img slider" id="big-img">
+        <div class="photo-mini">
+            <img src="@Model.CommonProducts.Image1" class="detail-img-mini slider">
+            <img src="@Model.CommonProducts.Image2" class="detail-img-mini slider">
+            <img src="@Model.CommonProducts.Image3" class="detail-img-mini slider">
+            <img src="@Model.CommonProducts.Image4" class="detail-img-mini slider">
+            <img src="@Model.CommonProducts.Image5" class="detail-img-mini slider">
+            <img src="@Model.CommonProducts.Image6" class="detail-img-mini slider">
+        </div>
+        <button class="slider-btn slider-next" id="next" onclick="arrows(1)">&#8594;</button>
+        <button class="slider-btn slider-prev" id="prev" onclick="arrows(-1)">&#8592;</button>
+    </div>
+
+</section>
+<section class="name-price">
+    <div class="product-price">
+        <p>@Model.CommonProducts.Price</p>
+        <span>₼</span>
+    </div>
+    <div class="product-name">
+        <h4>@Model.CommonProducts.ProductHeader</h4>
+    </div>
+</section>
+
+<section class="details-product">
+    <div class="product-left">
+        <div class="contact">
+
+            <p>@Model.CommonProducts.OwnerPhone <i class="fa-solid fa-phone"></i></p>
+
+            <p>Seller</p>
+        </div>
+        <div class="product-func">
+            <a href=""><i class="fa-solid fa-hashtag"></i>  Ad number:</a>
+            <a href=""><i class="fa-solid fa-eye"></i>  Logs:</a>
+            <a href=""><i class="fa-solid fa-pen"></i> Updated Date:</a>
+            <a href=""><i class="fa-solid fa-heart"></i> Add Favorites:</a>
+            <a href=""><i class="fa-solid fa-flag"></i> Report</a>
+        </div>
+    </div>
+    <div class="product-right" onload="detectCategor()">
+        <div class="product-rest-info">
+            <table class="rest-info" id="rest-info">
+                <tbody>
+                    <tr class="rest-tr">
+                        <th class="rest-td-name" id="category">Category</th>
+                        <td class="rest-td-value">@Model.CommonProducts.Category.CategoryName</td>
+                    </tr>
+
+                    <tr class="rest-tr">
+                        <th class="rest-td-name">City</th>
+                        <td class="rest-td-value">@Model.CommonProducts.City</td>
+                    </tr>
+                    <tr class="rest-tr">
+                        <th class="rest-td-name">Name</th>
+                        <td class="rest-td-value">@Model.ProductName</td>
+                    </tr>
+
+                    <tr class="rest-tr">
+                        <th class="rest-td-name">Name</th>
+                        <td class="rest-td-value">@Model.ProductSex</td>
+                    </tr>
+
+                    <tr class="rest-tr">
+                        <th class="rest-td-name">Name</th>
+                        <td class="rest-td-value">Example</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a </p>
+        </div>
+
+    </div>
+</section>
+
+
+
+
+<script type="text/javascript" src="~/Content/UI/detailslide.js"></script>
+
+
+<script>
+        function detectCategor() {
+            const table = document.getElementById("rest-info");
+            const category = document.getElementById("category");
+
+            if (category.innerHTML == "Personel") {
+                var sexDiv = document.createElement('div');
+                //sexDiv.setAttribute('class', 'field-product created-element-1');
+                sexDiv.innerHTML = `<tr class="rest-tr created">
+                            <th class="rest-td-name">Personel</th>
+                            <td class="rest-td-value">@Model.CommonProducts.Price</td>
+                        </tr>`;
+                table.insertBefore(sexDiv, table.childNodes[2]);
+            }
+
+            if (category.innerHTML == "Vehicle") {
+                var sexDiv = document.createElement('div');
+                //sexDiv.setAttribute('class', 'field-product created-element-1');
+                sexDiv.innerHTML = `<tr class="rest-tr created">
+                            <th class="rest-td-name">Personel</th>
+                            <td class="rest-td-value">@Model.CommonProducts.Price.</td>
+                        </tr>`;
+                table.insertBefore(sexDiv, table.childNodes[2]);
+            }
+
+        }
+</script>

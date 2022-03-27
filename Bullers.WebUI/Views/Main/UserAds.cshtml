@@ -1,0 +1,72 @@
+﻿@using Bullers.Entity.Concrete
+@model List<CommonProducts>
+@{
+    ViewBag.Title = "UserAds";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+
+<section class="ads" style="padding-top:55px;">
+    <h2 style=" margin-left:90px;">My Ads</h2>
+    <div class="ads-cards">
+
+        @foreach (var x in Model)
+        {
+            if (x.CategoryID == 1)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("PersonelView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                </div>
+            }
+            else if (x.CategoryID == 2)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("ElectronicsView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                </div>
+            }
+            else if (x.CategoryID == 3)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("EstateView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                </div>
+            }
+
+            else if (x.CategoryID == 4)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("VehicleView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                </div>
+            }
+        }
+
+    </div>
+
+
+
+
+</section>
+

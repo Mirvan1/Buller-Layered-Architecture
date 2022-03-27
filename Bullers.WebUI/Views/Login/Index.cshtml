@@ -1,0 +1,96 @@
+﻿@using Bullers.BLL.Manager
+@using Bullers.DAL.Concrete.EF
+@using Bullers.Entity.Concrete
+@model User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+
+<section class="section-login">
+    <i class="fa-solid fa-xmark" onclick="location.href='/Main/Index'"></i>
+    <div class="form-div">
+        <p>Login ipsum</p>
+        @*<form class="login">*@
+        @using (Html.BeginForm("Index", "Login", FormMethod.Post, new { @class = "login", id = "loginForm" }))
+        {
+            <div class="validation-errors">
+                @*<p id="errors"></p>*@
+                @Html.ValidationSummary(false, "", new { id = "errors" })
+            </div>
+            <input type="hidden" id="UserID" />
+            <div class="mail">
+                <input type="text" name="UseEmail" placeholder="Email" id="email">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="pass">
+                <input type="password" name="Password" placeholder="Password" id="password">
+
+                <i class="fa-solid fa-lock" id="show-password"></i>
+            </div>
+            <button type="submit" class="login-passive" id="login-button">Login</button>
+
+        }
+        @*</form>*@
+        <a href="/Login/Register">Don't have account?</a>
+    </div>
+</section>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="~/Content/UI/loginvalidation.js"></script>
+
+
+<script>
+
+
+   const formID= document.getElementById("loginForm");
+
+
+        formID.addEventListener('submit', function () {
+        // e.preventDefault();
+            if (Number(@TempData["userRegister"]) == 1) {
+            if (confirm("There is no account found.Do you want to create new one using this information?")) {
+
+                var data = $(formID).serialize();
+                console.log(data);
+                $.ajax({
+                    type: 'POST',
+                    data: data,
+                    url: 'Login/Register',
+                    dataType:"json",
+                    success: function () {
+                        alert("Your Account Created.You can log into your account");
+                    },
+                    error: function () {
+                        alert("NotCreate");
+                    },
+                    failure: function () {
+                        alert("Fail");
+                    },
+                    complete: function () {
+                        const loader = document.createElement("div");
+                        loader.innerText = "User created";
+                        document.body.appendChild(loader);
+                        loader.classList.add("lds-dual-ring");
+                        alert("Created Succesful    ly");
+                    }
+
+                });
+            }
+            else {
+                console.log("NO");
+            }
+        }
+    });
+
+
+</script>
+
+<script src="~/Content/UI/model-summary.js"></script>

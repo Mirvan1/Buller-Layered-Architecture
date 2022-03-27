@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Bullers-Demo</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Site.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-d">
+            <div class="res-menu" id="res-menu">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="res-list passive" id="res-list">
+                <ul class="un-list">
+                    <li><a href="/Main/Index">Home</a></li>
+                    <li><a href="/User/ListUserFavorites">Favorites</a></li>
+                 
+                    <li><a href="#footer">Rules</a></li>
+                    @if (Session["userMail"] == null)
+                    {
+                        <li><a href="/Login/Index">Login</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/User/UserInfo">Profile</a></li>
+                        <li><a href="/Main/UserAds">My Ads</a></li>
+                        <li><a href="/Login/Logout">Logout</a></li>
+                    }
+                </ul>
+            </div>
+
+            <div class="menu">
+                <div class="logo">
+                    <i class="fa-brands fa-joomla"></i>
+                </div>
+                <ul class="menu-list" id="menu-list">
+                    <li><a href="/Main/Index">Home</a></li>
+                    <li><a href="/User/ListUserFavorites">Favorites</a></li>
+                   
+                    <li><a href="#footer">Rules</a></li>
+                    @if (Session["userMail"] == null)
+                    {
+                        <li><a href="/Login/Index">Login</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/User/UserInfo">Profile</a></li>
+                        <li><a href="/Main/UserAds">My Ads</a></li>
+                        <li><a href="/Login/Logout">Logout</a></li>
+                    }
+                </ul>
+            </div>
+
+
+
+        </div>
+    </nav>
+
+    @RenderBody()
+
+    <footer>
+        <div class="footer" id="footer">
+            <div class="foot-card">
+                <p>Social Media </p>
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i><a href="https://www.gmail.com" target="_blank">Via Mail</a></li>
+                    <li><i class="fa-brands fa-twitter"></i><a href="https://www.twitter.com" target="_blank">Share on Twitter</a> </li>
+                    <li><i class="fa-brands fa-reddit"></i><a href="https://www.reddit.com" target="_blank">Share on Reddit</a></li>
+                    <li><i class="fa-brands fa-google"></i><a href="https://www.google.com" target="_blank">Share on Google</a></li>
+                </ul>
+            </div>
+
+            <div class="foot-card">
+                <p>Categories </p>
+                <ul>
+                    <li><a href=""><i class="fa-solid fa-object-group"></i> Personel</a></li>
+                    <li><a href=""><i class="fa-solid fa-microchip"></i> <small>Electronics</small></a></li>
+                    <li><a href=""><i class="fa-solid fa-car"></i> Vehicle</a></li>
+                    <li><a href=""><i class="fa-solid fa-house"></i> Estate</a></li>
+                </ul>
+            </div>
+
+            <div class="foot-card">
+                <p>Shortcuts</p>
+                <ul>
+                    <li><a href="/Main/Index">Home</a></li>
+                    <li><a href="/Login/Index">Login</a></li>
+                    <li><a href="/Login/Register">Sign Up</a></li>
+                    <li><a href="/Main/AddItem">Add Item</a></li>
+                </ul>
+            </div>
+
+
+        </div>
+    </footer>
+   
+    <script type="text/javascript" src="~/Content/UI/script.js"></script>
+   
+</body>
+</html>

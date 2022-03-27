@@ -1,0 +1,175 @@
+﻿@using Bullers.Entity.Concrete
+@model List<CommonProducts>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+
+
+
+
+<section class="category" style="padding-left:150px;">
+    @using (Html.BeginForm("Index", "Main", FormMethod.Get, new { id = "form" }))
+    {
+
+
+        <div id="section-category" class="section-category">
+            <div class="circle-category">
+                <i class="fa-solid fa-object-group"></i>
+                <span>Personel</span>
+            </div>
+            <div class="circle-category">
+                <i class="fa-solid fa-microchip"></i>
+                <span>Electronics</span>
+            </div>
+            <div class="circle-category">
+                <i class="fa-solid fa-car"></i>
+                <span>Vehicle</span>
+            </div>
+            <div class="circle-category">
+                <i class="fa-solid fa-house"></i>
+                <span>Estate</span>
+            </div>
+        </div>
+        <input type="hidden" name="catName" id="catName" />
+    }
+</section>
+
+
+<section class="ads-bar">
+    <h5>Latest Ads</h5>
+    <input type="text" name="searchBar" id="searchBar" placeholder="Search...">
+    <i class="fa-solid fa-magnifying-glass" id="searchIcon"></i>
+
+    <button onclick="window.location.href = '@Url.Action("AddItem","Main")';" id="new-ad-button"><i class="fa-solid fa-plus"></i></button>
+</section>
+
+
+<section class="ads">
+    <div class="ads-cards">
+
+        @foreach (var x in Model)
+        {
+            if (x.CategoryID == 1)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("PersonelView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    @if (Session["userID"] != null && x.UserFavorites.SingleOrDefault(y => y.ProductID == x.ProductID && y.UserID == (int)Session["userID"]) != null)
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" style="color:red" id="toFav"></i></a>
+                    }
+                    else
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                    }
+                </div>
+            }
+            else if (x.CategoryID == 2)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("ElectronicsView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    @if (Session["userID"] != null && x.UserFavorites.SingleOrDefault(y => y.ProductID == x.ProductID && y.UserID == (int)Session["userID"]) != null)
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" style="color:red" id="toFav"></i></a>
+                    }
+                    else
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                    }
+                </div>
+            }
+            else if (x.CategoryID == 4)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("EstateView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    @if (Session["userID"] != null && x.UserFavorites.SingleOrDefault(y => y.ProductID == x.ProductID && y.UserID == (int)Session["userID"]) != null)
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" style="color:red" id="toFav"></i></a>
+                    }
+                    else
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                    }
+                </div>
+            }
+
+            else if (x.CategoryID == 3)
+            {
+                <div class="product-card" onclick="window.location.href ='@Url.Action("VehicleView", "Main", new { id = x.ProductID })'">
+                    <img src="@x.Image1">
+                    <div class="card-title">
+                        <p>@x.Price</p>
+                        <p id="name-product" class="name-product">@x.ProductHeader</p>
+                        <span><small>@x.City</small></span>
+                    </div>
+                    @if (Session["userID"] != null && x.UserFavorites.SingleOrDefault(y => y.ProductID == x.ProductID && y.UserID == (int)Session["userID"]) != null)
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" style="color:red" id="toFav"></i></a>
+                    }
+                    else
+                    {
+                        <a href="/User/Favorites/@x.ProductID"><i class="fa-solid fa-heart" id="toFav"></i></a>
+                    }
+                </div>
+            }
+        }
+
+    </div>
+
+
+
+
+</section>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+<script>
+    function getCategoryName() {
+        var getCat = document.querySelectorAll(".circle-category");
+        var inputCat = document.getElementById("catName");
+        var formID = document.getElementById("form");
+        getCat.forEach(function (cat) {
+            cat.addEventListener('click', () => {
+                var spanN = cat.querySelector("span").textContent;
+
+                console.log(spanN);
+                inputCat.value = spanN;
+                formID.submit();
+                // $('#section-category').load(location.href +" #section-category");
+                //   $.get("/Main/Index/", { catName: spanN });
+                // return $(this).closest("form").submit();
+            });
+        });
+
+
+
+    }
+    getCategoryName();
+</script>
+
+<script type="text/javascript" src="~/Content/UI/searchnav.js"></script>
+<script>
+    var url = '@Url.Action("GetAllProductsByDepartmentId", "Home")';
+var tbl = $('#productsTable');
+$('.details').click(function() {
+    tbl.load(url, { id: $(this).data('id') });
+});
+</script>
+
+@*<script type="text/javascript" src="~/Content/UI/categorypage.js"></script>*@

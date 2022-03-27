@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+
+
+<section class="section-register">
+    <i class="fa-solid fa-xmark" onclick="location.href='/Main/Index'"></i>
+    <div class="form-div">
+        <p>Register</p>
+        @*<form class="login">*@
+        @using (Html.BeginForm("Register", "Login", FormMethod.Post, new { @class = "login", id = "loginForm" }))
+        {
+            <input type="hidden" id="UserID" />
+            <div class="register-mail">
+                <input type="text" name="UseEmail" placeholder="Email" id="email">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+
+            <div class="register-username">
+                <input type="text" name="Username" placeholder="Username" id="username">
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="register-pass">
+                <input type="password" name="Password" placeholder="Password" id="password">
+
+                <i class="fa-solid fa-lock" id="show-password-r"></i>
+            </div>
+            <button type="submit" class="reg-passive" id="reg-button">Login</button>
+        }
+        @*</form>*@
+    </div>
+</section>
+
+<script src="~/Content/UI/registerval.js" defer></script>
