@@ -121,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -136,9 +135,6 @@
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Category\Index.cshtml" />
-    <Content Include="Views\Category\AddData.cshtml" />
-    <Content Include="Views\Category\AddTotal.cshtml" />
     <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
