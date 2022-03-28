@@ -50,12 +50,7 @@ namespace Bullers.WebUI.Controllers
                     return RedirectToAction("Index", "Main");
                 }
     
-                else if (checkPassword == false)
-                {
-
-                    //  um.RegisterAcc(user);
-                    return View();
-                }
+              
                 else
                 {
                     return View();
